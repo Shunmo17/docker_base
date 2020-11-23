@@ -1,4 +1,4 @@
-name: Build Ubuntu Base
+name: Build Base Images
 
 on:
   push:
@@ -260,7 +260,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_ubuntu20
     env:
-      UBUNTU: 20
+      UBUNTU: 20.04
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -352,7 +352,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_ubuntu20_cuda
     env:
-      UBUNTU: 20
+      UBUNTU: 20.04
       CUDA: 11.1-devel
     steps:
       - name: checkout
@@ -386,6 +386,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_ubuntu16
     env:
+      UBUNTU: 16.04
       ROS_DISTRO: kinetic
     steps:
       - name: checkout
@@ -418,6 +419,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build_ubuntu18
     env:
+      UBUNTU: 18.04
       ROS_DISTRO: melodic
     steps:
       - name: checkout
@@ -448,8 +450,9 @@ jobs:
 
   build_ros1_noetic:
     runs-on: ubuntu-latest
-    needs: build_ubuntu18
+    needs: build_ubuntu20
     env:
+      UBUNTU: 20.04
       ROS_DISTRO: noetic
     steps:
       - name: checkout
