@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       UBUNTU: 16
+      IMAGE_NAME: ubuntu${{ env.UBUNTU }}
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -31,14 +32,15 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:1.0.0
+            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:1.0.0
           build_extra_args: "--build-arg=BASE_IMAGE=ubuntu:${{ env.UBUNTU }}.04 --build-arg=UBUNTU=${{ env.UBUNTU }}"
   
   build_and_push_ubuntu18:
     runs-on: ubuntu-latest
     env:
       UBUNTU: 18
+      IMAGE_NAME: ubuntu${{ env.UBUNTU }}
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -59,14 +61,15 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:1.0.0
+            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:1.0.0
           build_extra_args: "--build-arg=BASE_IMAGE=ubuntu:${{ env.UBUNTU }}.04 --build-arg=UBUNTU=${{ env.UBUNTU }}"
   
   build_and_push_ubuntu20:
     runs-on: ubuntu-latest
     env:
       UBUNTU: 20
+      IMAGE_NAME: ubuntu${{ env.UBUNTU }}
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -87,6 +90,6 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:1.0.0
+            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:1.0.0
           build_extra_args: "--build-arg=BASE_IMAGE=ubuntu:${{ env.UBUNTU }}.04 --build-arg=UBUNTU=${{ env.UBUNTU }}"
