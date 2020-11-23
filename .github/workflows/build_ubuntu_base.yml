@@ -122,7 +122,7 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
+            ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
           build-args: |
             BASE_IMAGE=nvidia/cuda:${{ env.CUDA }}-ubuntu${{ env.UBUNTU }}
             UBUNTU=${{ env.UBUNTU }}
@@ -153,7 +153,7 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
+            ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
           build-args: |
             BASE_IMAGE=nvidia/cuda:${{ env.CUDA }}-ubuntu${{ env.UBUNTU }}
             UBUNTU=${{ env.UBUNTU }}
@@ -184,7 +184,7 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
+            ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
           build-args: |
             BASE_IMAGE=nvidia/cuda:${{ env.CUDA }}-ubuntu${{ env.UBUNTU }}
             UBUNTU=${{ env.UBUNTU }}
