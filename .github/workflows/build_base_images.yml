@@ -714,7 +714,7 @@ jobs:
           tags: |
             ghcr.io/shunmo17/ros2:${{ env.ROS_DISTRO }}
           build-args: |
-            BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.ROS_DISTRO }}
+            BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
           file: ./ros2/Dockerfile
 
@@ -747,7 +747,7 @@ jobs:
           tags: |
             ghcr.io/shunmo17/ros2.nvidia:${{ env.ROS_DISTRO }}
           build-args: |
-            BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.ROS_DISTRO }}
+            BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
           file: ./ros2/Dockerfile
 
