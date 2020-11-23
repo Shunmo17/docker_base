@@ -125,7 +125,7 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/ros1:${{ env.ROS_DISTRO }}
+            ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:16.04
             ROS_DISTRO=${{ env.ROS_DISTRO }}
@@ -156,7 +156,7 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/ros1:${{ env.ROS_DISTRO }}
+            ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:18.04
             ROS_DISTRO=${{ env.ROS_DISTRO }}
@@ -187,7 +187,7 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/ros1:${{ env.ROS_DISTRO }}
+            ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:20.04
             ROS_DISTRO=${{ env.ROS_DISTRO }}
