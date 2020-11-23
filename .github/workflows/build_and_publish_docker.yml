@@ -31,8 +31,8 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:1.0.0
+            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:1.0.0
           build_extra_args: "--build-arg=BASE_IMAGE=ubuntu:${{ env.UBUNTU }}.04 --build-arg=UBUNTU=${{ env.UBUNTU }}"
   
   build_and_push_ubuntu18:
@@ -59,8 +59,8 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:1.0.0
+            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:1.0.0
           build_extra_args: "--build-arg=BASE_IMAGE=ubuntu:${{ env.UBUNTU }}.04 --build-arg=UBUNTU=${{ env.UBUNTU }}"
   
   build_and_push_ubuntu20:
@@ -87,6 +87,6 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ github.actor }}/${{ env.IMAGE_NAME }}:1.0.0
+            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/shunmo17/${{ env.IMAGE_NAME }}:1.0.0
           build_extra_args: "--build-arg=BASE_IMAGE=ubuntu:${{ env.UBUNTU }}.04 --build-arg=UBUNTU=${{ env.UBUNTU }}"
