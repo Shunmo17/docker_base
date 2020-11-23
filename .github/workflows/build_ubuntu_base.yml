@@ -97,7 +97,7 @@ jobs:
             UBUNTU=${{ env.UBUNTU }}
           file: ./ubuntu/Dockerfile
 
-  build_ubuntu16_with_cuda:
+  build_ubuntu16_cuda:
     runs-on: ubuntu-latest
     env:
       UBUNTU: 16.04
@@ -128,7 +128,7 @@ jobs:
             UBUNTU=${{ env.UBUNTU }}
           file: ./ubuntu/Dockerfile
 
-  build_ubuntu18_with_cuda:
+  build_ubuntu18_cuda:
     runs-on: ubuntu-latest
     env:
       UBUNTU: 18.04
@@ -159,7 +159,7 @@ jobs:
             UBUNTU=${{ env.UBUNTU }}
           file: ./ubuntu/Dockerfile
   
-  build_ubuntu20_with_cuda:
+  build_ubuntu20_cuda:
     runs-on: ubuntu-latest
     env:
       UBUNTU: 20.04

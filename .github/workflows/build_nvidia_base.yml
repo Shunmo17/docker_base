@@ -7,8 +7,9 @@ on:
       - devel
 
 jobs:
-  build_ubuntu16_nvidia_without_cuda:
+  build_ubuntu16_nvidia:
     runs-on: ubuntu-latest
+    needs: build_ubuntu16
     env:
       UBUNTU: 16.04
     steps:
@@ -36,8 +37,9 @@ jobs:
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
           file: ./nvidia/Dockerfile
 
-  build_ubuntu18_nvidia_without_cuda:
+  build_ubuntu18_nvidia:
     runs-on: ubuntu-latest
+    needs: build_ubuntu18
     env:
       UBUNTU: 18.04
     steps:
@@ -65,8 +67,9 @@ jobs:
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
           file: ./nvidia/Dockerfile
 
-  build_ubuntu20_nvidia_without_cuda:
+  build_ubuntu20_nvidia:
     runs-on: ubuntu-latest
+    needs: build_ubuntu20
     env:
       UBUNTU: 20
     steps:
@@ -94,8 +97,9 @@ jobs:
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
           file: ./nvidia/Dockerfile
 
-  build_ubuntu16_nvidia_with_cuda:
+  build_ubuntu16_nvidia_cuda:
     runs-on: ubuntu-latest
+    needs: build_ubuntu16_cuda
     env:
       UBUNTU: 16.04
       CUDA: 11.1-devel
@@ -124,8 +128,9 @@ jobs:
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
           file: ./nvidia/Dockerfile
 
-  build_ubuntu18_nvidia_with_cuda:
+  build_ubuntu18_nvidia_cuda:
     runs-on: ubuntu-latest
+    needs: build_ubuntu18_cuda
     env:
       UBUNTU: 18.04
       CUDA: 11.1-devel
@@ -154,8 +159,9 @@ jobs:
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
           file: ./nvidia/Dockerfile
 
-  build_ubuntu20_nvidia_with_cuda:
+  build_ubuntu20_nvidia_cuda:
     runs-on: ubuntu-latest
+    needs: build_ubuntu20_cuda
     env:
       UBUNTU: 20
       CUDA: 11.1-devel
