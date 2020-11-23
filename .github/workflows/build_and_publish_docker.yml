@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       UBUNTU: 16
-      IMAGE_NAME: ubuntu${{ env.UBUNTU }}
+      IMAGE_NAME: ubuntu16
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       UBUNTU: 18
-      IMAGE_NAME: ubuntu${{ env.UBUNTU }}
+      IMAGE_NAME: ubuntu18
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       UBUNTU: 20
-      IMAGE_NAME: ubuntu${{ env.UBUNTU }}
+      IMAGE_NAME: ubuntu20
     steps:
       - name: checkout
         uses: actions/checkout@v2
