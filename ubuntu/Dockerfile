@@ -11,7 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # avoid time-zone setting
 ARG UBUNTU
-RUN if [ "${UBUNTU}" = "18" ]; then \
+RUN if [ "${UBUNTU}" = "18.04" ]; then \
         apt update \
         && apt install -y tzdata; \
     fi
@@ -38,7 +38,7 @@ RUN apt update && apt install -y \
 #     && rm -rf /var/lib/apt/lists/* \
 #     && wget https://bootstrap.pypa.io/get-pip.py
 
-RUN if [ "${UBUNTU}" = "16" -o "${UBUNTU}" = "18" ]; then \
+RUN if [ "${UBUNTU}" = "16.04" -o "${UBUNTU}" = "18.04" ]; then \
         apt update && apt install -y python-pip; \
     else apt update && apt install -y python3-pip; \
     fi

@@ -10,7 +10,7 @@ jobs:
   build_ubuntu16_nvidia:
     runs-on: ubuntu-latest
     env:
-      UBUNTU: 16
+      UBUNTU: 16.04
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -31,16 +31,15 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}.04
+            ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
           build-args: |
-            BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}.04
-            UBUNTU=${{ env.UBUNTU }}
+            BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
           file: ./nvidia/Dockerfile
 
   build_ubuntu18_nvidia:
     runs-on: ubuntu-latest
     env:
-      UBUNTU: 18
+      UBUNTU: 18.04
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -61,10 +60,9 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}.04
+            ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
           build-args: |
-            BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}.04
-            UBUNTU=${{ env.UBUNTU }}
+            BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
           file: ./nvidia/Dockerfile
 
   build_ubuntu20_nvidia:
@@ -91,8 +89,7 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}.04
+            ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
           build-args: |
-            BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}.04
-            UBUNTU=${{ env.UBUNTU }}
+            BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
           file: ./nvidia/Dockerfile
