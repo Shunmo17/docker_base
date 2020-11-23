@@ -779,7 +779,7 @@ jobs:
           context: ./ubuntu
           push: true
           tags: |
-            ghcr.io/shunmo17/ros2.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
+            ghcr.io/shunmo17/ros2.nvidia:${{ env.ROS_DISTRO }}-cuda${{ env.CUDA }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
