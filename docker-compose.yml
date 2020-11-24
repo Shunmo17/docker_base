@@ -34,7 +34,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: nvidia:16.04-cuda10.1-devel
+        BASE_IMAGE: nvidia/cuda:10.1-devel-ubuntu16.04
         UBUNTU: 16.04
       dockerfile: ./ubuntu/Dockerfile
     image: shunmo17/ubuntu:16.04-cuda10.1-devel
@@ -43,7 +43,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: nvidia:18.04-cuda10.1-devel
+        BASE_IMAGE: nvidia/cuda:10.1-devel-ubuntu18.04
         UBUNTU: 18.04
       dockerfile: ./ubuntu/Dockerfile
     image: shunmo17/ubuntu:18.04-cuda10.1-devel
@@ -52,7 +52,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: nvidia:20.04-cuda11.0-devel
+        BASE_IMAGE: nvidia/cuda:11.0-devel-ubuntu20.04
         UBUNTU: 20.04
       dockerfile: ./ubuntu/Dockerfile
     image: shunmo17/ubuntu:20.04-cuda11.0-devel
@@ -64,7 +64,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu:16.04
+        BASE_IMAGE: shunmo17/ubuntu:16.04
         UBUNTU: 16.04
       dockerfile: ./nvidia/Dockerfile
     depends_on: 
@@ -75,7 +75,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu:18.04
+        BASE_IMAGE: shunmo17/ubuntu:18.04
         UBUNTU: 18.04
       dockerfile: ./nvidia/Dockerfile
     depends_on: 
@@ -86,7 +86,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu:20.04
+        BASE_IMAGE: shunmo17/ubuntu:20.04
         UBUNTU: 20.04
       dockerfile: ./nvidia/Dockerfile
     depends_on: 
@@ -97,7 +97,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu:16.04-cuda10.1-devel
+        BASE_IMAGE: shunmo17/ubuntu:16.04-cuda10.1-devel
         UBUNTU: 16.04
       dockerfile: ./nvidia/Dockerfile
     depends_on: 
@@ -108,7 +108,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu:18.04-cuda10.1-devel
+        BASE_IMAGE: shunmo17/ubuntu:18.04-cuda10.1-devel
         UBUNTU: 18.04
       dockerfile: ./nvidia/Dockerfile
     depends_on: 
@@ -119,7 +119,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu:20.04-cuda11.0-devel
+        BASE_IMAGE: shunmo17/ubuntu:20.04-cuda11.1-devel
         UBUNTU: 20.04
       dockerfile: ./nvidia/Dockerfile
     depends_on: 
@@ -133,7 +133,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu:16.04
+        BASE_IMAGE: shunmo17/ubuntu:16.04
         UBUNTU: 16.04
         ROS_DISTRO: kinetic
       dockerfile: ./ros1/Dockerfile
@@ -145,7 +145,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu:18.04
+        BASE_IMAGE: shunmo17/ubuntu:18.04
         UBUNTU: 18.04
         ROS_DISTRO: melodic
       dockerfile: ./ros1/Dockerfile
@@ -157,7 +157,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu:20.04
+        BASE_IMAGE: shunmo17/ubuntu:20.04
         UBUNTU: 20.04
         ROS_DISTRO: noetic
       dockerfile: ./ros1/Dockerfile
@@ -169,7 +169,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu.nvidia:16.04
+        BASE_IMAGE: shunmo17/ubuntu.nvidia:16.04
         UBUNTU: 16.04
         ROS_DISTRO: kinetic
       dockerfile: ./ros1/Dockerfile
@@ -181,7 +181,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu.nvidia:18.04
+        BASE_IMAGE: shunmo17/ubuntu.nvidia:18.04
         UBUNTU: 18.04
         ROS_DISTRO: melodic
       dockerfile: ./ros1/Dockerfile
@@ -193,7 +193,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu.nvidia:20.04
+        BASE_IMAGE: shunmo17/ubuntu.nvidia:20.04
         UBUNTU: 20.04
         ROS_DISTRO: noetic
       dockerfile: ./ros1/Dockerfile
@@ -205,7 +205,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu.nvidia:16.04-cuda10.1-devel
+        BASE_IMAGE: shunmo17/ubuntu.nvidia:16.04-cuda10.1-devel
         UBUNTU: 16.04
         ROS_DISTRO: kinetic
       dockerfile: ./ros1/Dockerfile
@@ -217,7 +217,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu.nvidia:18.04-cuda10.1-devel
+        BASE_IMAGE: shunmo17/ubuntu.nvidia:18.04-cuda10.1-devel
         UBUNTU: 18.04
         ROS_DISTRO: melodic
       dockerfile: ./ros1/Dockerfile
@@ -229,7 +229,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu.nvidia:20.04-cuda11.0-devel
+        BASE_IMAGE: shunmo17/ubuntu.nvidia:20.04-cuda11.0-devel
         UBUNTU: 20.04
         ROS_DISTRO: noetic
       dockerfile: ./ros1/Dockerfile
@@ -244,7 +244,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu:18.04
+        BASE_IMAGE: shunmo17/ubuntu:18.04
         UBUNTU: 18.04
         ROS_DISTRO: dashing
       dockerfile: ./ros2/Dockerfile
@@ -256,7 +256,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu.nvidia:18.04
+        BASE_IMAGE: shunmo17/ubuntu.nvidia:18.04
         UBUNTU: 18.04
         ROS_DISTRO: dashing
       dockerfile: ./ros2/Dockerfile
@@ -268,7 +268,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: ubuntu.nvidia:18.04-cuda10.1-devel
+        BASE_IMAGE: shunmo17/ubuntu.nvidia:18.04-cuda10.1-devel
         UBUNTU: 16.04
         ROS_DISTRO: dashing
       dockerfile: ./ros2/Dockerfile
