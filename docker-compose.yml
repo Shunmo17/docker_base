@@ -1,0 +1,277 @@
+version: "2.3"
+services:
+# ===============================================================
+#   Building Ubuntu Base Image 
+# ===============================================================
+  ubuntu16:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:16.04
+        UBUNTU: 16.04
+      dockerfile: ./ubuntu/Dockerfile
+    image: shunmo17/ubuntu:16.04
+
+  ubuntu18:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:18.04
+        UBUNTU: 18.04
+      dockerfile: ./ubuntu/Dockerfile
+    image: shunmo17/ubuntu:18.04
+
+  ubuntu20:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:20.04
+        UBUNTU: 20.04
+      dockerfile: ./ubuntu/Dockerfile
+    image: shunmo17/ubuntu:20.04
+
+  ubuntu16_cuda:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: nvidia:16.04-cuda10.1-devel
+        UBUNTU: 16.04
+      dockerfile: ./ubuntu/Dockerfile
+    image: shunmo17/ubuntu:16.04-cuda10.1-devel
+
+  ubuntu18_cuda:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: nvidia:18.04-cuda10.1-devel
+        UBUNTU: 18.04
+      dockerfile: ./ubuntu/Dockerfile
+    image: shunmo17/ubuntu:18.04-cuda10.1-devel
+
+  ubuntu20_cuda:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: nvidia:20.04-cuda11.0-devel
+        UBUNTU: 20.04
+      dockerfile: ./ubuntu/Dockerfile
+    image: shunmo17/ubuntu:20.04-cuda11.0-devel
+
+# ===============================================================
+#   Building NVIDIA Base Image 
+# ===============================================================
+  ubuntu16_nvidia:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:16.04
+        UBUNTU: 16.04
+      dockerfile: ./nvidia/Dockerfile
+    depends_on: 
+      - ubuntu16
+    image: shunmo17/ubuntu.nvidia:16.04
+
+  ubuntu18_nvidia:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:18.04
+        UBUNTU: 18.04
+      dockerfile: ./nvidia/Dockerfile
+    depends_on: 
+      - ubuntu18
+    image: shunmo17/ubuntu.nvidia:18.04
+
+  ubuntu20_nvidia:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:20.04
+        UBUNTU: 20.04
+      dockerfile: ./nvidia/Dockerfile
+    depends_on: 
+      - ubuntu20
+    image: shunmo17/ubuntu.nvidia:20.04
+
+  ubuntu16_nvidia_cuda:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:16.04-cuda10.1-devel
+        UBUNTU: 16.04
+      dockerfile: ./nvidia/Dockerfile
+    depends_on: 
+      - ubuntu16_cuda
+    image: shunmo17/ubuntu.nvidia:16.04-cuda10.1-devel
+
+  ubuntu18_nvidia_cuda:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:18.04-cuda10.1-devel
+        UBUNTU: 18.04
+      dockerfile: ./nvidia/Dockerfile
+    depends_on: 
+      - ubuntu18_cuda
+    image: shunmo17/ubuntu.nvidia:18.04-cuda10.1-devel
+
+  ubuntu20_nvidia_cuda:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:20.04-cuda11.0-devel
+        UBUNTU: 20.04
+      dockerfile: ./nvidia/Dockerfile
+    depends_on: 
+      - ubuntu20_cuda
+    image: shunmo17/ubuntu.nvidia:20.04-cuda11.0-devel
+
+# ===============================================================
+#   Building ROS1 Base Image
+# ===============================================================
+  ros1_kinetic:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:16.04
+        UBUNTU: 16.04
+        ROS_DISTRO: kinetic
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu16
+    image: shunmo17/ros1:kinetic
+
+  ros1_melodic:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:18.04
+        UBUNTU: 18.04
+        ROS_DISTRO: melodic
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu18
+    image: shunmo17/ros1:melodic
+
+  ros1_noetic:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:20.04
+        UBUNTU: 20.04
+        ROS_DISTRO: noetic
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu20
+    image: shunmo17/ros1:noetic
+
+  ros1_kinetic_nvidia:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu.nvidia:16.04
+        UBUNTU: 16.04
+        ROS_DISTRO: kinetic
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu16_nvidia
+    image: shunmo17/ros1.nvidia:kinetic
+
+  ros1_melodic_nvidia:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu.nvidia:18.04
+        UBUNTU: 18.04
+        ROS_DISTRO: melodic
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu18_nvidia
+    image: shunmo17/ros1.nvidia:melodic
+
+  ros1_noetic_nvidia:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu.nvidia:20.04
+        UBUNTU: 20.04
+        ROS_DISTRO: noetic
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu20_nvidia
+    image: shunmo17/ros1.nvidia:noetic
+
+  ros1_kinetic_nvidia_cuda:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu.nvidia:16.04-cuda10.1-devel
+        UBUNTU: 16.04
+        ROS_DISTRO: kinetic
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu16_nvidia_cuda
+    image: shunmo17/ros1.nvidia:kinetic-cuda10.1-devel
+
+  ros1_melodic_nvidia_cuda:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu.nvidia:18.04-cuda10.1-devel
+        UBUNTU: 18.04
+        ROS_DISTRO: melodic
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu18_nvidia_cuda
+    image: shunmo17/ros1.nvidia:melodic-cuda10.1-devel
+
+  ros1_noetic_nvidia_cuda:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu.nvidia:20.04-cuda11.0-devel
+        UBUNTU: 20.04
+        ROS_DISTRO: noetic
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu20_nvidia_cuda
+    image: shunmo17/ros1.nvidia:noetic-cuda11.0-devel
+
+# ===============================================================
+#   Building ROS2 Base Image 
+# ===============================================================
+  ros2_dashing:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:18.04
+        UBUNTU: 18.04
+        ROS_DISTRO: dashing
+      dockerfile: ./ros2/Dockerfile
+    depends_on: 
+      - ubuntu18
+    image: shunmo17/ros2:dashing
+
+  ros2_dashing_nvidia:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu.nvidia:18.04
+        UBUNTU: 18.04
+        ROS_DISTRO: dashing
+      dockerfile: ./ros2/Dockerfile
+    depends_on: 
+      - ubuntu18_nvidia
+    image: shunmo17/ros2.nvidia:dashing
+
+  ros2_dashing_nvidia_cuda:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu.nvidia:18.04-cuda10.1-devel
+        UBUNTU: 16.04
+        ROS_DISTRO: dashing
+      dockerfile: ./ros2/Dockerfile
+    depends_on: 
+      - ubuntu18_nvidia_cuda
+    image: shunmo17/ros2.nvidia:dashing-cuda10.1-devel
