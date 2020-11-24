@@ -119,7 +119,7 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: shunmo17/ubuntu:20.04-cuda11.1-devel
+        BASE_IMAGE: shunmo17/ubuntu:20.04-cuda11.0-devel
         UBUNTU: 20.04
       dockerfile: ./nvidia/Dockerfile
     depends_on: 
