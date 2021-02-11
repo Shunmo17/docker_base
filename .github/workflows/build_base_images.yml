@@ -31,7 +31,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
@@ -61,7 +61,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
@@ -91,7 +91,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
@@ -122,7 +122,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -153,7 +153,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -184,7 +184,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -218,7 +218,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
@@ -248,7 +248,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
@@ -278,7 +278,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
@@ -309,7 +309,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -340,7 +340,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -371,7 +371,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -406,7 +406,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros1:${{ env.ROS_DISTRO }}
@@ -439,7 +439,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros1:${{ env.ROS_DISTRO }}
@@ -472,7 +472,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros1:${{ env.ROS_DISTRO }}
@@ -505,7 +505,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}
@@ -538,7 +538,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}
@@ -571,7 +571,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}
@@ -605,7 +605,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}-cuda${{ env.CUDA }}
@@ -639,7 +639,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}-cuda${{ env.CUDA }}
@@ -673,7 +673,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}-cuda${{ env.CUDA }}
@@ -709,7 +709,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros2:${{ env.ROS_DISTRO }}
@@ -742,7 +742,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros2.nvidia:${{ env.ROS_DISTRO }}
@@ -776,7 +776,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: ./ubuntu
+          context: .
           push: true
           tags: |
             ghcr.io/shunmo17/ros2.nvidia:${{ env.ROS_DISTRO }}-cuda${{ env.CUDA }}
