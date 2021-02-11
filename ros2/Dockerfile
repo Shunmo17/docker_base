@@ -65,3 +65,4 @@ CMD ["bash"]
 RUN mkdir -p /ros2_ws/src
 WORKDIR /ros2_ws
 RUN	/bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash; colcon build --symlink-install"
+COPY common/ros_entrypoint.sh /ros_entrypoint.sh

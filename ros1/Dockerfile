@@ -79,3 +79,6 @@ RUN	/bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash; catkin init"
 
 RUN echo "source /ros_setting.sh" >> ~/.bashrc && \
     echo "source /catkin_build.bash" >> ~/.bashrc
+
+COPY common/catkin_build.bash /catkin_build.bash
+COPY common/ros_entrypoint.sh /ros_entrypoint.sh

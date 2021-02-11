@@ -43,7 +43,10 @@ RUN if [ "${UBUNTU}" = "16.04" -o "${UBUNTU}" = "18.04" ]; then \
     else apt update && apt install -y python3-pip; \
     fi
 
-## fix terminator error
+# terminator config
+COPY common/config /root/.config/terminator/config
+
+# fix terminator error
 RUN apt update && apt install -y \
     dbus-x11 \
     && apt clean \
