@@ -32,9 +32,9 @@ jobs:
         run: |
           docker buildx build \
             --push \
-            --platform linux/amd64, linux/arm64 \
+            --platform linux/amd64,linux/arm64 \
             --build-arg BASE_IMAGE=ubuntu:${{ env.UBUNTU }} \
-            --build-arg UBUNTU=${{ env.UBUNTU }}
+            --build-arg UBUNTU=${{ env.UBUNTU }} \
             -t ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }} \
             ./ubuntu/Dockerfile
         # uses: docker/build-push-action@v2
