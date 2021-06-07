@@ -36,7 +36,7 @@ jobs:
             --build-arg BASE_IMAGE=ubuntu:${{ env.UBUNTU }} \
             --build-arg UBUNTU=${{ env.UBUNTU }} \
             -t ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }} \
-            ./ubuntu/Dockerfile
+            ./../../ubuntu/Dockerfile
         # uses: docker/build-push-action@v2
         # with:
         #   context: .
