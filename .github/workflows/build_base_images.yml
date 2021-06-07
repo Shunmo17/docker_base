@@ -29,26 +29,17 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build and push
-        run: |
-          docker buildx build \
-            --push \
-            --platform linux/amd64,linux/arm64 \
-            --build-arg BASE_IMAGE=ubuntu:${{ env.UBUNTU }} \
-            --build-arg UBUNTU=${{ env.UBUNTU }} \
-            -t ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }} \
-            --file ubuntu/Dockerfile \
-            .
-        # uses: docker/build-push-action@v2
-        # with:
-        #   context: .
-        #   platforms: linux/amd64, linux/arm64
-        #   push: true
-        #   tags: |
-        #     ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
-        #   build-args: |
-        #     BASE_IMAGE=ubuntu:${{ env.UBUNTU }}
-        #     UBUNTU=${{ env.UBUNTU }}
-        #   file: ./ubuntu/Dockerfile
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          platforms: linux/amd64, linux/arm64
+          push: true
+          tags: |
+            ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
+          build-args: |
+            BASE_IMAGE=ubuntu:${{ env.UBUNTU }}
+            UBUNTU=${{ env.UBUNTU }}
+          file: ./ubuntu/Dockerfile
 
   build_ubuntu18:
     runs-on: ubuntu-latest
