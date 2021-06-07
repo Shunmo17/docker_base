@@ -32,6 +32,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
@@ -62,6 +63,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
@@ -92,6 +94,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
@@ -123,6 +126,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -154,6 +158,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -185,6 +190,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -219,6 +225,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
@@ -249,6 +256,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
@@ -279,6 +287,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
@@ -310,6 +319,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -341,6 +351,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -372,6 +383,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
@@ -407,6 +419,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros1:${{ env.ROS_DISTRO }}
@@ -440,6 +453,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros1:${{ env.ROS_DISTRO }}
@@ -473,6 +487,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros1:${{ env.ROS_DISTRO }}
@@ -506,6 +521,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}
@@ -539,6 +555,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}
@@ -572,6 +589,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}
@@ -606,6 +624,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}-cuda${{ env.CUDA }}
@@ -640,6 +659,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}-cuda${{ env.CUDA }}
@@ -674,6 +694,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros1.nvidia:${{ env.ROS_DISTRO }}-cuda${{ env.CUDA }}
@@ -710,6 +731,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros2:${{ env.ROS_DISTRO }}
@@ -743,6 +765,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros2.nvidia:${{ env.ROS_DISTRO }}
@@ -777,6 +800,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
+          platforms: linux/amd64, linux/arm64
           push: true
           tags: |
             ghcr.io/shunmo17/ros2.nvidia:${{ env.ROS_DISTRO }}-cuda${{ env.CUDA }}
