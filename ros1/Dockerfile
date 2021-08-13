@@ -19,6 +19,10 @@ RUN apt update && apt install -my \
     && apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
 # setup sources.list
+## for indigo (14.04)
+RUN if [ "${ROS_DISTRO}" = "indigo" ]; then \
+    echo "deb http://packages.ros.org/ros/ubuntu trusty main" > /etc/apt/sources.list.d/ros-latest.list; \
+    fi
 ## for kinetic (16.04)
 RUN if [ "${ROS_DISTRO}" = "kinetic" ]; then \
     echo "deb http://packages.ros.org/ros/ubuntu xenial main" > /etc/apt/sources.list.d/ros1-latest.list; \
