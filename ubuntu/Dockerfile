@@ -28,7 +28,6 @@ RUN apt update && apt install -y \
     nautilus \
     gedit \
     vim \
-    && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
 # install pip (after ver3.4 : pip is installed)
@@ -49,7 +48,6 @@ COPY common/config /root/.config/terminator/config
 # fix terminator error
 RUN apt update && apt install -y \
     dbus-x11 \
-    && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
 # aiias

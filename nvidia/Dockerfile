@@ -15,7 +15,6 @@ RUN apt update && apt install -y --no-install-recommends \
     libxcb1-dev \
     libxext-dev \
     libx11-dev \
-    && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=nvidia/opengl:1.0-glvnd-runtime-ubuntu16.04 \

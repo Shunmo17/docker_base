@@ -14,7 +14,6 @@ ENV ROS_DISTRO ${ROS_DISTRO}
 # setup keys
 RUN apt update && apt install -my \
     wget gnupg \
-    && apt clean \
     && rm -rf /var/lib/apt/lists/* \
     && apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
@@ -38,7 +37,6 @@ RUN if [ "${ROS_DISTRO}" = "noetic" ]; then \
 # install ros
 RUN apt update && apt install -y \
     ros-${ROS_DISTRO}-desktop-full \
-    && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
 # install dependecies
@@ -53,7 +51,6 @@ RUN if [ ${ROS_DISTRO} = "noetic" ]; then \
         build-essential \ 
         python3-pip \
         && pip3 install osrf-pycommon \
-        && apt clean \
         && rm -rf /var/lib/apt/lists/*; \
     else apt update && apt install -y \
         python-rosdep \
@@ -62,7 +59,6 @@ RUN if [ ${ROS_DISTRO} = "noetic" ]; then \
         python-wstool \
         python-catkin-tools \
         build-essential \ 
-        && apt clean \
         && rm -rf /var/lib/apt/lists/*; \
     fi
 
