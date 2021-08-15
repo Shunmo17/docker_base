@@ -3,6 +3,15 @@ services:
 # ===============================================================
 #   Building Ubuntu Base Image 
 # ===============================================================
+  ubuntu14:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:14.04
+        UBUNTU: 14.04
+      dockerfile: ./ubuntu/Dockerfile
+    image: shunmo17/ubuntu:14.04
+
   ubuntu16:
     build:
       context: .
@@ -29,7 +38,7 @@ services:
         UBUNTU: 20.04
       dockerfile: ./ubuntu/Dockerfile
     image: shunmo17/ubuntu:20.04
-
+    
   ubuntu16_cuda:
     build:
       context: .
@@ -60,6 +69,17 @@ services:
 # ===============================================================
 #   Building NVIDIA Base Image 
 # ===============================================================
+  ubuntu14_nvidia:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: shunmo17/ubuntu:14.04
+        UBUNTU: 14.04
+      dockerfile: ./nvidia/Dockerfile
+    depends_on: 
+      - ubuntu14
+    image: shunmo17/ubuntu.nvidia:14.04
+
   ubuntu16_nvidia:
     build:
       context: .
@@ -129,6 +149,18 @@ services:
 # ===============================================================
 #   Building ROS1 Base Image
 # ===============================================================
+  ros1_indigo:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: shunmo17/ubuntu:14.04
+        UBUNTU: 14.04
+        ROS_DISTRO: indigo
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu14
+    image: shunmo17/ros1:indigo
+
   ros1_kinetic:
     build:
       context: .
@@ -164,6 +196,18 @@ services:
     depends_on: 
       - ubuntu20
     image: shunmo17/ros1:noetic
+
+  ros1_indigo_nvidia:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: shunmo17/ubuntu.nvidia:14.04
+        UBUNTU: 14.04
+        ROS_DISTRO: indigo
+      dockerfile: ./ros1/Dockerfile
+    depends_on: 
+      - ubuntu14
+    image: shunmo17/ros1.nvidia:indigo
 
   ros1_kinetic_nvidia:
     build:
