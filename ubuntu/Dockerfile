@@ -5,7 +5,7 @@ ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
 # change server for apt-get
-RUN if ["${UBUNTU}" -ne "14.04" ]; then \
+RUN if ["${UBUNTU}" != "14.04" ]; then \
         sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list \
     fi
 
