@@ -12,7 +12,7 @@ ARG ROS_DISTRO
 ENV ROS_DISTRO ${ROS_DISTRO}
 
 # setup keys
-RUN apt update && apt install -my \
+RUN apt update && apt install -y \
     wget gnupg \
     && apt clean \
     && rm -rf /var/lib/apt/lists/* \

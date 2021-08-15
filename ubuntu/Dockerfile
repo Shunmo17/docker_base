@@ -5,7 +5,9 @@ ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
 # change server for apt-get
-RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list
+RUN if ["${UBUNTU}" -ne "14.04" ]; then \
+        sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list \
+    fi
 
 ENV DEBIAN_FRONTEND=noninteractive
 
