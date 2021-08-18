@@ -22,12 +22,8 @@ RUN apt update && apt install -y \
     curl \
     gnupg2 \
     lsb-release
-RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-RUN sh -c 'echo "deb http://packages.ros.org/ros2/ubuntu `lsb_release -cs` main" > /etc/apt/sources.list.d/ros2-latest.list'
-
-# ROS2 distro
-ARG ROS_DISTRO
-ENV ROS_DISTRO ${ROS_DISTRO}
+RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
+RUN echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list
 
 # Install ROS2 packages
 RUN apt update && apt install -y \

@@ -14,8 +14,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # avoid time-zone setting
 ARG UBUNTU
 RUN if [ "${UBUNTU}" = "18.04" -o "${UBUNTU}" = "20.04" ]; then \
-        apt update \
-        && apt install -y tzdata; \
+        apt update && apt install -y tzdata; \
     fi
 
 ##############################################################################

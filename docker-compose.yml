@@ -206,7 +206,7 @@ services:
         ROS_DISTRO: indigo
       dockerfile: ./ros1/Dockerfile
     depends_on: 
-      - ubuntu14
+      - ubuntu14_nvidia
     image: shunmo17/ros1.nvidia:indigo
 
   ros1_kinetic_nvidia:
