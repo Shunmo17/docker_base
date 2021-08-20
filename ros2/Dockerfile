@@ -7,6 +7,10 @@ FROM ${BASE_IMAGE}
 ##############################################################################
 ##                                 ROS2 Install                             ##
 ##############################################################################
+# ros distro
+ARG ROS_DISTRO
+ENV ROS_DISTRO ${ROS_DISTRO}
+
 # Set locate
 RUN apt update && apt install -y \
     language-pack-ja-base \
