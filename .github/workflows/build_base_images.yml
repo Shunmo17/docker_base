@@ -39,7 +39,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ubuntu:${{ env.UBUNTU }}
             UBUNTU=${{ env.UBUNTU }}
-          file: ./ubuntu/Dockerfile
+          file: Dockerfile.ubuntu
           
   build_ubuntu16:
     runs-on: ubuntu-latest
@@ -70,7 +70,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ubuntu:${{ env.UBUNTU }}
             UBUNTU=${{ env.UBUNTU }}
-          file: ./ubuntu/Dockerfile
+          file: Dockerfile.ubuntu
 
   build_ubuntu18:
     runs-on: ubuntu-latest
@@ -101,7 +101,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ubuntu:${{ env.UBUNTU }}
             UBUNTU=${{ env.UBUNTU }}
-          file: ./ubuntu/Dockerfile
+          file: Dockerfile.ubuntu
   
   build_ubuntu20:
     runs-on: ubuntu-latest
@@ -132,7 +132,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ubuntu:${{ env.UBUNTU }}
             UBUNTU=${{ env.UBUNTU }}
-          file: ./ubuntu/Dockerfile
+          file: Dockerfile.ubuntu
 
   build_ubuntu16_cuda:
     runs-on: ubuntu-latest
@@ -164,7 +164,7 @@ jobs:
           build-args: |
             BASE_IMAGE=nvidia/cuda:${{ env.CUDA }}-ubuntu${{ env.UBUNTU }}
             UBUNTU=${{ env.UBUNTU }}
-          file: ./ubuntu/Dockerfile
+          file: Dockerfile.ubuntu
 
   build_ubuntu18_cuda:
     runs-on: ubuntu-latest
@@ -196,7 +196,7 @@ jobs:
           build-args: |
             BASE_IMAGE=nvidia/cuda:${{ env.CUDA }}-ubuntu${{ env.UBUNTU }}
             UBUNTU=${{ env.UBUNTU }}
-          file: ./ubuntu/Dockerfile
+          file: Dockerfile.ubuntu
   
   build_ubuntu20_cuda:
     runs-on: ubuntu-latest
@@ -228,7 +228,7 @@ jobs:
           build-args: |
             BASE_IMAGE=nvidia/cuda:${{ env.CUDA }}-ubuntu${{ env.UBUNTU }}
             UBUNTU=${{ env.UBUNTU }}
-          file: ./ubuntu/Dockerfile
+          file: Dockerfile.ubuntu
 
 # ===============================================================
 #   Building NVIDIA Base Image 
@@ -262,7 +262,7 @@ jobs:
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
-          file: ./nvidia/Dockerfile
+          file: Dockerfile.nvidia
 
   build_ubuntu16_nvidia:
     runs-on: ubuntu-latest
@@ -293,7 +293,7 @@ jobs:
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
-          file: ./nvidia/Dockerfile
+          file: Dockerfile.nvidia
 
   build_ubuntu18_nvidia:
     runs-on: ubuntu-latest
@@ -324,7 +324,7 @@ jobs:
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
-          file: ./nvidia/Dockerfile
+          file: Dockerfile.nvidia
 
   build_ubuntu20_nvidia:
     runs-on: ubuntu-latest
@@ -355,7 +355,7 @@ jobs:
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
-          file: ./nvidia/Dockerfile
+          file: Dockerfile.nvidia
 
   build_ubuntu16_nvidia_cuda:
     runs-on: ubuntu-latest
@@ -387,7 +387,7 @@ jobs:
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
-          file: ./nvidia/Dockerfile
+          file: Dockerfile.nvidia
 
   build_ubuntu18_nvidia_cuda:
     runs-on: ubuntu-latest
@@ -419,7 +419,7 @@ jobs:
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
-          file: ./nvidia/Dockerfile
+          file: Dockerfile.nvidia
 
   build_ubuntu20_nvidia_cuda:
     runs-on: ubuntu-latest
@@ -451,7 +451,7 @@ jobs:
             ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
-          file: ./nvidia/Dockerfile
+          file: Dockerfile.nvidia
 
 # ===============================================================
 #   Building ROS1 Base Image
@@ -488,7 +488,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
   build_ros1_kinetic:
     runs-on: ubuntu-latest
@@ -522,7 +522,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
   build_ros1_melodic:
     runs-on: ubuntu-latest
@@ -556,7 +556,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
   build_ros1_noetic:
     runs-on: ubuntu-latest
@@ -590,7 +590,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
   build_ros1_indigo_nvidia:
     runs-on: ubuntu-latest
@@ -624,7 +624,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
   build_ros1_kinetic_nvidia:
     runs-on: ubuntu-latest
@@ -658,7 +658,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
   build_ros1_melodic_nvidia:
     runs-on: ubuntu-latest
@@ -692,7 +692,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
   build_ros1_noetic_nvidia:
     runs-on: ubuntu-latest
@@ -726,7 +726,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
   build_ros1_kinetic_nvidia_cuda:
     runs-on: ubuntu-latest
@@ -761,7 +761,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
   build_ros1_melodic_nvidia_cuda:
     runs-on: ubuntu-latest
@@ -796,7 +796,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
   build_ros1_noetic_nvidia_cuda:
     runs-on: ubuntu-latest
@@ -831,7 +831,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros1/Dockerfile
+          file: Dockerfile.ros1
 
 # ===============================================================
 #   Building ROS2 Base Image 
@@ -868,7 +868,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros2/Dockerfile
+          file: Dockerfile.ros2
 
   build_ros2_dashing_nvidia:
     runs-on: ubuntu-latest
@@ -902,7 +902,7 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros2/Dockerfile
+          file: Dockerfile.ros2
 
   build_ros2_dashing_nvidia_cuda:
     runs-on: ubuntu-latest
@@ -937,4 +937,4 @@ jobs:
           build-args: |
             BASE_IMAGE=ghcr.io/shunmo17/ubuntu.nvidia:${{ env.UBUNTU }}-cuda${{ env.CUDA }}
             ROS_DISTRO=${{ env.ROS_DISTRO }}
-          file: ./ros2/Dockerfile
+          file: Dockerfile.ros2
