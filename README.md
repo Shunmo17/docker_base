@@ -24,7 +24,7 @@ ex: `ros1:noetic-cuda11.7`
 
 `foxy`
 
-ex: `ros2:dashing`
+ex: `ros2:foxy`
 
 *ROS2 image is experimental version. 
 
