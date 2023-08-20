@@ -51,4 +51,4 @@ RUN if [ ${ROS_DISTRO} = "noetic" ]; then \
         && rm -rf /var/lib/apt/lists/*; \
     fi
 
-RUN echo "source /opro/ros/${ROS_DISTRO}/setup.bash" >> /home/user/.bashrc
+RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /home/user/.bashrc
