@@ -3,319 +3,105 @@ services:
 # ===============================================================
 #   Building Ubuntu Base Image 
 # ===============================================================
-  ubuntu14:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ubuntu:14.04
-        UBUNTU: 14.04
-      dockerfile: Dockerfile.ubuntu
-    image: shunmo17/ubuntu:14.04
-
-  ubuntu16:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ubuntu:16.04
-        UBUNTU: 16.04
-      dockerfile: Dockerfile.ubuntu
-    image: shunmo17/ubuntu:16.04
-
-  ubuntu18:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ubuntu:18.04
-        UBUNTU: 18.04
-      dockerfile: Dockerfile.ubuntu
-    image: shunmo17/ubuntu:18.04
-
   ubuntu20:
     build:
       context: .
       args:
         BASE_IMAGE: ubuntu:20.04
-        UBUNTU: 20.04
-      dockerfile: Dockerfile.ubuntu
-    image: shunmo17/ubuntu:20.04
-    
-  ubuntu16_cuda:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: nvidia/cuda:10.1-devel-ubuntu16.04
-        UBUNTU: 16.04
-      dockerfile: Dockerfile.ubuntu
-    image: shunmo17/ubuntu:16.04-cuda10.1-devel
+        PASSWD: user
+      dockerfile: dockerfiles/Dockerfile.base
+    image: ghcr.io/shunmo17/base:ubuntu20.04
 
-  ubuntu18_cuda:
+  ubuntu20_cuda117:
     build:
       context: .
       args:
-        BASE_IMAGE: nvidia/cuda:10.1-devel-ubuntu18.04
-        UBUNTU: 18.04
-      dockerfile: Dockerfile.ubuntu
-    image: shunmo17/ubuntu:18.04-cuda10.1-devel
-
-  ubuntu20_cuda:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: nvidia/cuda:11.0-devel-ubuntu20.04
-        UBUNTU: 20.04
-      dockerfile: Dockerfile.ubuntu
-    image: shunmo17/ubuntu:20.04-cuda11.0-devel
+        BASE_IMAGE: nvidia/cuda:11.7.1-devel-ubuntu20.04
+        PASSWD: user
+      dockerfile: dockerfiles/Dockerfile.base
+    image: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
 
 # ===============================================================
-#   Building NVIDIA Base Image 
+#   Add PyTorch
 # ===============================================================
-  ubuntu14_nvidia:
+  ubuntu20_cuda117_pytorch200:
     build:
       context: .
       args:
-        BASE_IMAGE: shunmo17/ubuntu:14.04
-        UBUNTU: 14.04
-      dockerfile: Dockerfile.nvidia
-    depends_on: 
-      - ubuntu14
-    image: shunmo17/ubuntu.nvidia:14.04
-
-  ubuntu16_nvidia:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu:16.04
-        UBUNTU: 16.04
-      dockerfile: Dockerfile.nvidia
-    depends_on: 
-      - ubuntu16
-    image: shunmo17/ubuntu.nvidia:16.04
-
-  ubuntu18_nvidia:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu:18.04
-        UBUNTU: 18.04
-      dockerfile: Dockerfile.nvidia
-    depends_on: 
-      - ubuntu18
-    image: shunmo17/ubuntu.nvidia:18.04
-
-  ubuntu20_nvidia:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu:20.04
-        UBUNTU: 20.04
-      dockerfile: Dockerfile.nvidia
-    depends_on: 
-      - ubuntu20
-    image: shunmo17/ubuntu.nvidia:20.04
-
-  ubuntu16_nvidia_cuda:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu:16.04-cuda10.1-devel
-        UBUNTU: 16.04
-      dockerfile: Dockerfile.nvidia
-    depends_on: 
-      - ubuntu16_cuda
-    image: shunmo17/ubuntu.nvidia:16.04-cuda10.1-devel
-
-  ubuntu18_nvidia_cuda:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu:18.04-cuda10.1-devel
-        UBUNTU: 18.04
-      dockerfile: Dockerfile.nvidia
-    depends_on: 
-      - ubuntu18_cuda
-    image: shunmo17/ubuntu.nvidia:18.04-cuda10.1-devel
-
-  ubuntu20_nvidia_cuda:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu:20.04-cuda11.0-devel
-        UBUNTU: 20.04
-      dockerfile: Dockerfile.nvidia
-    depends_on: 
-      - ubuntu20_cuda
-    image: shunmo17/ubuntu.nvidia:20.04-cuda11.0-devel
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
+      dockerfile: dockerfiles/Dockerfile.pytorch
+    depends_on:
+      - ubuntu20_cuda117
+    image: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7-pytorch2.0.0
 
 # ===============================================================
 #   Building ROS1 Base Image
 # ===============================================================
-  ros1_indigo:
+  ubuntu20_noetic:
     build:
       context: .
       args:
-        BASE_IMAGE: shunmo17/ubuntu:14.04
-        UBUNTU: 14.04
-        ROS_DISTRO: indigo
-      dockerfile: Dockerfile.ros1
-    depends_on: 
-      - ubuntu14
-    image: shunmo17/ros1:indigo
-
-  ros1_kinetic:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu:16.04
-        UBUNTU: 16.04
-        ROS_DISTRO: kinetic
-      dockerfile: Dockerfile.ros1
-    depends_on: 
-      - ubuntu16
-    image: shunmo17/ros1:kinetic
-
-  ros1_melodic:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu:18.04
-        UBUNTU: 18.04
-        ROS_DISTRO: melodic
-      dockerfile: Dockerfile.ros1
-    depends_on: 
-      - ubuntu18
-    image: shunmo17/ros1:melodic
-
-  ros1_noetic:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu:20.04
-        UBUNTU: 20.04
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04
         ROS_DISTRO: noetic
-      dockerfile: Dockerfile.ros1
+      dockerfile: dockerfiles/Dockerfile.ros1
     depends_on: 
       - ubuntu20
-    image: shunmo17/ros1:noetic
+    image: ghcr.io/shunmo17/ros1:noetic
 
-  ros1_indigo_nvidia:
+  ubuntu20_cuda117_noetic:
     build:
       context: .
       args:
-        BASE_IMAGE: shunmo17/ubuntu.nvidia:14.04
-        UBUNTU: 14.04
-        ROS_DISTRO: indigo
-      dockerfile: Dockerfile.ros1
-    depends_on: 
-      - ubuntu14_nvidia
-    image: shunmo17/ros1.nvidia:indigo
-
-  ros1_kinetic_nvidia:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu.nvidia:16.04
-        UBUNTU: 16.04
-        ROS_DISTRO: kinetic
-      dockerfile: Dockerfile.ros1
-    depends_on: 
-      - ubuntu16_nvidia
-    image: shunmo17/ros1.nvidia:kinetic
-
-  ros1_melodic_nvidia:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu.nvidia:18.04
-        UBUNTU: 18.04
-        ROS_DISTRO: melodic
-      dockerfile: Dockerfile.ros1
-    depends_on: 
-      - ubuntu18_nvidia
-    image: shunmo17/ros1.nvidia:melodic
-
-  ros1_noetic_nvidia:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu.nvidia:20.04
-        UBUNTU: 20.04
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
         ROS_DISTRO: noetic
-      dockerfile: Dockerfile.ros1
+      dockerfile: dockerfiles/Dockerfile.ros1
     depends_on: 
-      - ubuntu20_nvidia
-    image: shunmo17/ros1.nvidia:noetic
+      - ubuntu20_cuda117
+    image: ghcr.io/shunmo17/ros1:noetic-cuda11.7
 
-  ros1_kinetic_nvidia_cuda:
+  ubuntu20_cuda117_pytorch200_noetic:
     build:
       context: .
       args:
-        BASE_IMAGE: shunmo17/ubuntu.nvidia:16.04-cuda10.1-devel
-        UBUNTU: 16.04
-        ROS_DISTRO: kinetic
-      dockerfile: Dockerfile.ros1
-    depends_on: 
-      - ubuntu16_nvidia_cuda
-    image: shunmo17/ros1.nvidia:kinetic-cuda10.1-devel
-
-  ros1_melodic_nvidia_cuda:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu.nvidia:18.04-cuda10.1-devel
-        UBUNTU: 18.04
-        ROS_DISTRO: melodic
-      dockerfile: Dockerfile.ros1
-    depends_on: 
-      - ubuntu18_nvidia_cuda
-    image: shunmo17/ros1.nvidia:melodic-cuda10.1-devel
-
-  ros1_noetic_nvidia_cuda:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu.nvidia:20.04-cuda11.0-devel
-        UBUNTU: 20.04
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7-pytorch2.0.0
         ROS_DISTRO: noetic
-      dockerfile: Dockerfile.ros1
+      dockerfile: dockerfiles/Dockerfile.ros1
     depends_on: 
-      - ubuntu20_nvidia_cuda
-    image: shunmo17/ros1.nvidia:noetic-cuda11.0-devel
+      - ubuntu20_cuda117_pytorch200
+    image: ghcr.io/shunmo17/ros1:noetic-cuda11.7-pytorch2.0.0
 
-# ===============================================================
-#   Building ROS2 Base Image 
-# ===============================================================
-  ros2_dashing:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu:18.04
-        UBUNTU: 18.04
-        ROS_DISTRO: dashing
-      dockerfile: Dockerfile.ros2
-    depends_on: 
-      - ubuntu18
-    image: shunmo17/ros2:dashing
+# # ===============================================================
+# #   Add ROS2
+# # ===============================================================
+#   ubuntu20_foxy:
+#     build:
+#       context: .
+#       args:
+#         BASE_IMAGE: ghcr.io/shunmo17/ubuntu:20.04
+#         ROS_DISTRO: foxy
+#       dockerfile: dockerfiles/Dockerfile.ros2
+#     depends_on: 
+#       - ubuntu20
+#     image: ghcr.io/shunmo17/ros2:foxy
 
-  ros2_dashing_nvidia:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu.nvidia:18.04
-        UBUNTU: 18.04
-        ROS_DISTRO: dashing
-      dockerfile: Dockerfile.ros2
-    depends_on: 
-      - ubuntu18_nvidia
-    image: shunmo17/ros2.nvidia:dashing
+#   ubuntu20_cuda117_foxy:
+#     build:
+#       context: .
+#       args:
+#         BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
+#         ROS_DISTRO: foxy
+#       dockerfile: dockerfiles/Dockerfile.ros1
+#     depends_on: 
+#       - ubuntu20_cuda117
+#     image: ghcr.io/shunmo17/ros2:foxy-cuda11.7
 
-  ros2_dashing_nvidia_cuda:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: shunmo17/ubuntu.nvidia:18.04-cuda10.1-devel
-        UBUNTU: 16.04
-        ROS_DISTRO: dashing
-      dockerfile: Dockerfile.ros2
-    depends_on: 
-      - ubuntu18_nvidia_cuda
-    image: shunmo17/ros2.nvidia:dashing-cuda10.1-devel
+#   ubuntu20_cuda117_pytorch200_foxy:
+#     build:
+#       context: .
+#       args:
+#         BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7-pytorch2.0.0
+#         ROS_DISTRO: foxy
+#       dockerfile: dockerfiles/Dockerfile.ros1
+#     depends_on: 
+#       - ubuntu20_cuda117_pytorch200
+#     image: ghcr.io/shunmo17/ros2:foxy-cuda11.7-pytorch2.0.0

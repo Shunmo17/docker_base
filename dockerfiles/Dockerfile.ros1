@@ -1,0 +1,54 @@
+##############################################################################
+##                                 Base Image                               ##
+##############################################################################
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+##############################################################################
+##                                ROS1 Install                              ##
+##############################################################################
+# ros distro
+ARG ROS_DISTRO
+ENV ROS_DISTRO ${ROS_DISTRO}
+
+# setup keys
+RUN apt update && apt install -y \
+    wget \
+    curl \
+    gnupg \
+    lsb-release \
+    && rm -rf /var/lib/apt/lists/*
+RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list \
+    && curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+
+# install ros
+RUN apt update && apt install -y \
+    ros-${ROS_DISTRO}-desktop-full \
+    && rm -rf /var/lib/apt/lists/*
+
+# install dependecies
+RUN if [ ${ROS_DISTRO} = "noetic" ]; then \
+        apt update && apt install -y \
+        python3-rosdep \
+        python3-rosinstall \
+        python3-rosinstall-generator \
+        python3-wstool \
+        python3-catkin-tools \
+        python3-vcstool \
+        build-essential \ 
+        python3-pip \
+        && pip3 install osrf-pycommon \
+        && apt clean \
+        && rm -rf /var/lib/apt/lists/*; \
+    else apt update && apt install -y \
+        python-rosdep \
+        python-rosinstall \
+        python-rosinstall-generator \
+        python-wstool \
+        python-catkin-tools \
+        build-essential \
+        && apt clean \
+        && rm -rf /var/lib/apt/lists/*; \
+    fi
+
+RUN echo "source /opro/ros/${ROS_DISTRO}/setup.bash" >> /home/user/.bashrc

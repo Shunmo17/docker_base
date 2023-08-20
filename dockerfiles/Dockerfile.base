@@ -1,0 +1,36 @@
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+# change server for apt-get
+RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list;
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# install ifconfig & ping
+RUN apt update && apt install -y \
+    tzdata \
+    iproute2 \
+    iputils-ping \
+    net-tools \
+    terminator \
+    nautilus \
+    gedit \
+    vim \
+    python3-pip \
+    python-is-python3 \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create user with password ${PASSWD} and assign adequate groups
+# ref: https://github.com/selkies-project/docker-nvidia-egl-desktop/blob/main/Dockerfile
+ARG PASSWD=user
+RUN apt-get update && apt-get install --no-install-recommends -y \
+        sudo && \
+    rm -rf /var/lib/apt/lists/* && \
+    groupadd -g 1000 user && \
+    useradd -ms /bin/bash user -u 1000 -g 1000 && \
+    usermod -a -G adm,audio,cdrom,dialout,dip,fax,floppy,input,lp,lpadmin,plugdev,pulse-access,scanner,sudo,tape,tty,video,voice user && \
+    echo "user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    chown user:user /home/user && \
+    echo "user:${PASSWD}" | chpasswd && \
+    ln -snf "/usr/share/zoneinfo/$TZ" /etc/localtime && echo "$TZ" > /etc/timezone
