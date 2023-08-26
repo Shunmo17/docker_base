@@ -26,11 +26,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
 
-      - name: Setup buildx
-        uses: docker/setup-buildx-action@v2
+      # - name: Setup buildx
+      #   uses: docker/setup-buildx-action@v2
+
+      # - name: Build images
+      #   run: docker buildx bake --file docker-compose.yml --file .github/docker-compose-cache.json
 
       - name: Build images
-        run: docker buildx bake --file docker-compose.yml --file .github/docker-compose-cache.json
+        run: docker compose build
 
       - name: Push images
         run: docker compose push
