@@ -3,41 +3,58 @@ services:
 # ===============================================================
 #   Building Ubuntu Base Image 
 # ===============================================================
-  ubuntu20:
+  ubuntu20.04:
     build:
       context: .
       args:
         BASE_IMAGE: ubuntu:20.04
-        PASSWD: user
       dockerfile: dockerfiles/Dockerfile.base
     image: ghcr.io/shunmo17/base:ubuntu20.04
 
-  ubuntu20_cuda117:
+  ubuntu20.04-cuda11.7:
     build:
       context: .
       args:
         BASE_IMAGE: nvidia/cuda:11.7.1-devel-ubuntu20.04
-        PASSWD: user
       dockerfile: dockerfiles/Dockerfile.base
     image: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
 
-# ===============================================================
-#   Add PyTorch
-# ===============================================================
-  ubuntu20_cuda117_pytorch200:
+  ubuntu20.04-nvidia-egl:
     build:
       context: .
       args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
-      dockerfile: dockerfiles/Dockerfile.pytorch
-    depends_on:
-      - ubuntu20_cuda117
-    image: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7-pytorch2.0.0
+        BASE_IMAGE: ghcr.io/selkies-project/nvidia-egl-desktop:20.04
+      dockerfile: dockerfiles/Dockerfile.base
+    image: ghcr.io/shunmo17/nvidia-egl:ubuntu20.04-cuda11.0
+
+  ubuntu22.04:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ubuntu:22.04
+      dockerfile: dockerfiles/Dockerfile.base
+    image: ghcr.io/shunmo17/base:ubuntu22.04
+
+  ubuntu22.04-cuda11.7:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: nvidia/cuda:11.7.1-devel-ubuntu22.04
+      dockerfile: dockerfiles/Dockerfile.base
+    image: ghcr.io/shunmo17/base:ubuntu22.04-cuda11.7
+
+  ubuntu22.04-nvidia-egl:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/selkies-project/nvidia-egl-desktop:22.04
+      dockerfile: dockerfiles/Dockerfile.base
+    image: ghcr.io/shunmo17/nvidia-egl:ubuntu22.04-cuda11.0
 
 # ===============================================================
 #   Building ROS1 Base Image
 # ===============================================================
-  ubuntu20_noetic:
+  ubuntu20.04-noetic:
     build:
       context: .
       args:
@@ -45,10 +62,10 @@ services:
         ROS_DISTRO: noetic
       dockerfile: dockerfiles/Dockerfile.ros1
     depends_on: 
-      - ubuntu20
+      - ubuntu20.04
     image: ghcr.io/shunmo17/ros1:noetic
 
-  ubuntu20_cuda117_noetic:
+  ubuntu20.04-cuda11.7-noetic:
     build:
       context: .
       args:
@@ -56,52 +73,52 @@ services:
         ROS_DISTRO: noetic
       dockerfile: dockerfiles/Dockerfile.ros1
     depends_on: 
-      - ubuntu20_cuda117
+      - ubuntu20.04-cuda11.7
     image: ghcr.io/shunmo17/ros1:noetic-cuda11.7
 
-  ubuntu20_cuda117_pytorch200_noetic:
+  ubuntu20.04-nvidia-egl-noetic:
     build:
       context: .
       args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7-pytorch2.0.0
+        BASE_IMAGE: ghcr.io/shunmo17/nvidia-egl:ubuntu20.04-cuda11.0
         ROS_DISTRO: noetic
       dockerfile: dockerfiles/Dockerfile.ros1
     depends_on: 
-      - ubuntu20_cuda117_pytorch200
-    image: ghcr.io/shunmo17/ros1:noetic-cuda11.7-pytorch2.0.0
+      - ubuntu20.04-nvidia-egl
+    image: ghcr.io/shunmo17/ros1:noetic-nvidia-egl-cuda11.0
 
-# # ===============================================================
-# #   Add ROS2
-# # ===============================================================
-#   ubuntu20_foxy:
-#     build:
-#       context: .
-#       args:
-#         BASE_IMAGE: ghcr.io/shunmo17/ubuntu:20.04
-#         ROS_DISTRO: foxy
-#       dockerfile: dockerfiles/Dockerfile.ros2
-#     depends_on: 
-#       - ubuntu20
-#     image: ghcr.io/shunmo17/ros2:foxy
+# ===============================================================
+#   Building ROS2 Base Image
+# ===============================================================
+  ubuntu22.04-humble:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu22.04
+        ROS_DISTRO: humble
+      dockerfile: dockerfiles/Dockerfile.ros2
+    depends_on: 
+      - ubuntu22.04
+    image: ghcr.io/shunmo17/ros2:humble
 
-#   ubuntu20_cuda117_foxy:
-#     build:
-#       context: .
-#       args:
-#         BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
-#         ROS_DISTRO: foxy
-#       dockerfile: dockerfiles/Dockerfile.ros1
-#     depends_on: 
-#       - ubuntu20_cuda117
-#     image: ghcr.io/shunmo17/ros2:foxy-cuda11.7
+  ubuntu22.04-cuda11.7-humble:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu22.04-cuda11.7
+        ROS_DISTRO: humble
+      dockerfile: dockerfiles/Dockerfile.ros2
+    depends_on: 
+      - ubuntu22.04-cuda11.7
+    image: ghcr.io/shunmo17/ros2:humble-cuda11.7
 
-#   ubuntu20_cuda117_pytorch200_foxy:
-#     build:
-#       context: .
-#       args:
-#         BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7-pytorch2.0.0
-#         ROS_DISTRO: foxy
-#       dockerfile: dockerfiles/Dockerfile.ros1
-#     depends_on: 
-#       - ubuntu20_cuda117_pytorch200
-#     image: ghcr.io/shunmo17/ros2:foxy-cuda11.7-pytorch2.0.0
+  ubuntu22.04-nvidia-egl-humble:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/shunmo17/nvidia-egl:ubuntu22.04-cuda11.0
+        ROS_DISTRO: humble
+      dockerfile: dockerfiles/Dockerfile.ros2
+    depends_on: 
+      - ubuntu22.04-nvidia-egl
+    image: ghcr.io/shunmo17/ros2:humble-nvidia-egl-cuda11.0
