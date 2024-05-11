@@ -1,0 +1,18 @@
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  clear_cache:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Delete all containers from package without tags
+        uses: Chizkiyahu/delete-untagged-ghcr-action@v3
+        with:
+          token: ${{ github.token }}
+          repository_owner: ${{ github.repository_owner }}
+          repository: ${{ github.repository }}
+          package_name: "base,dind-base,nvidia-egl,ros1,ros2"
+          untagged_only: true
+          owner_type: user # or user
