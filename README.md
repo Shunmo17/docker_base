@@ -1,3 +1,5 @@
+[![Clean Container Registry](https://github.com/Shunmo17/docker_base/actions/workflows/clean_repo.yml/badge.svg?branch=master)](https://github.com/Shunmo17/docker_base/actions/workflows/clean_repo.yml)
+
 # docker base
 
 ## Description
