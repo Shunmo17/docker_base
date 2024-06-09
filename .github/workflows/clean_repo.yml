@@ -1,0 +1,21 @@
+name: Clean Container Registry
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * 0'
+
+jobs:
+  delete_untagged:
+    name: Delete Untagged Packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Delete Untagged Packages
+        uses: Chizkiyahu/delete-untagged-ghcr-action@v4
+        with:
+          token: ${{ secrets.GHCR_TOKEN }}
+          repository_owner: ${{ github.repository_owner }}
+          repository: ${{ github.repository }}
+          untagged_only: true
+          owner_type: user
