@@ -1,8 +1,10 @@
-COMPOSE_DOCKER_CLI_BUILD=1
-DOCKER_BUILDKIT=1
+#!/bin/bash
+
+export COMPOSE_DOCKER_CLI_BUILD=1
+export DOCKER_BUILDKIT=1
 
 max_retry_count=100 # リトライ回数
-retry_interval=1 # リトライ間隔（秒）
+retry_interval=5    # リトライ間隔（秒）
 
 retry_count=0
 while true; do

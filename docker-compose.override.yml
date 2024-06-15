@@ -1,0 +1,15 @@
+services:
+  ubuntu20.04:
+    extends:
+      file: docker-compose.common.yml
+      service: normal
+
+  ubuntu20.04-desktop:
+    extends:
+      file: docker-compose.common.yml
+      service: nvidia-edl-desktop
+
+  ubuntu20.04-desktop-noetic:
+    extends:
+      file: docker-compose.common.yml
+      service: nvidia-edl-desktop

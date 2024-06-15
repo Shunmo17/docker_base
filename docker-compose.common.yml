@@ -1,0 +1,56 @@
+services:
+  normal:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+
+    environment:
+      - LAUNCH_SSH_SERVER=${LAUNCH_SSH_SERVER:-true}
+
+    ports:
+      - ${SSH_PORT:-222}:222
+
+    volumes:
+      - /home/$USER/.ssh/authorized_keys:/tmp/authorized_keys:ro
+      - /home/$USER/.ssh/id_rsa:/tmp/id_rsa:ro
+
+  nvidia-edl-desktop:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+
+    environment:
+      - TZ=UTC
+      - SIZEW=${SIZEW:-1920}
+      - SIZEH=${SIZEH:-1080}
+      - REFRESH=${REFRESH:-60}
+      - DPI=${DPI:-96}
+      - PASSWD=${PASSWD:-user}
+      - BASIC_AUTH_PASSWORD=${PASSWD:-user}
+      - CDEPTH=24
+      - VIDEO_PORT=DFP
+      - WEBRTC_ENCODER=nvh264enc
+      - NOVNC_ENABLE=true
+      - LAUNCH_SSH_SERVER=${LAUNCH_SSH_SERVER:-true}
+
+    user: user
+    working_dir: /home/user
+
+    ports:
+      - "${WEB_RTC_PORT:-8080}:8080"
+      - "${VNC_PORT:-5900}:5900"
+      - "${SSH_PORT:-222}:222"
+
+    volumes:
+      - /home/$USER/.ssh/authorized_keys:/tmp/authorized_keys:ro
+      - /home/$USER/.ssh/id_rsa:/tmp/id_rsa:ro
+
+    tmpfs: /dev/shm:rw

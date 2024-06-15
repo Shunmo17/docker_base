@@ -3,12 +3,13 @@ FROM ${BASE_IMAGE}
 
 USER root
 
+ARG SSH_PORT=222
+
 # change server for apt-get
-# RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list;
+RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list;
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# install ifconfig & ping
 RUN apt update && apt install -y \
     sudo \
     htop \
@@ -21,7 +22,27 @@ RUN apt update && apt install -y \
     byobu \
     python3-pip \
     wget \
+    openssh-server \
+    terminator \
     && rm -rf /var/lib/apt/lists/*
+
+# ssh server settings
+ENV LAUNCH_SSH_SERVER=false
+RUN mkdir /var/run/sshd
+RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config &&\
+    sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config &&\
+    sed -i "s/#Port 22/Port ${SSH_PORT}/" /etc/ssh/sshd_config &&\
+    # SSH login fix. Otherwise user is kicked off after login
+    sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+COPY scripts/entrypoint.sh /etc/entrypoint.sh
+RUN chmod +x /etc/entrypoint.sh
+CMD ["/etc/entrypoint.sh"]
+EXPOSE ${SSH_PORT}
+
+# add user
+RUN useradd -m user && usermod -aG sudo user \
+    && chsh -s /bin/bash user;
+RUN echo "user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN apt update && apt upgrade -y \
     && rm -rf /var/lib/apt/lists/*
