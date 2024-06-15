@@ -8,5 +8,8 @@ if "${LAUNCH_SSH_SERVER}"; then
     chown -R user:user /home/user/.ssh
 
     # launch openssh server
-    /usr/sbin/sshd -D
+    sudo ssh-keygen -A
+    sudo /usr/sbin/sshd -D
 fi
+
+/bin/bash

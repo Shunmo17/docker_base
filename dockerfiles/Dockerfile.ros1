@@ -22,27 +22,46 @@ RUN apt update && apt install -y \
 
 # install dependecies
 RUN if [ ${ROS_DISTRO} = "noetic" ]; then \
-        apt update && apt install -y \
-        python3-rosdep \
-        python3-rosinstall \
-        python3-rosinstall-generator \
-        python3-wstool \
-        python3-catkin-tools \
-        python3-vcstool \
-        build-essential \ 
-        python3-pip \
-        && pip3 install osrf-pycommon \
-        && apt clean \
-        && rm -rf /var/lib/apt/lists/*; \
+    apt update && apt install -y \
+    python3-rosdep \
+    python3-rosinstall \
+    python3-rosinstall-generator \
+    python3-wstool \
+    python3-catkin-tools \
+    python3-vcstool \
+    build-essential \ 
+    python3-pip \
+    && pip3 install osrf-pycommon \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*; \
     else apt update && apt install -y \
-        python-rosdep \
-        python-rosinstall \
-        python-rosinstall-generator \
-        python-wstool \
-        python-catkin-tools \
-        build-essential \
-        && apt clean \
-        && rm -rf /var/lib/apt/lists/*; \
+    python-rosdep \
+    python-rosinstall \
+    python-rosinstall-generator \
+    python-wstool \
+    python-catkin-tools \
+    build-essential \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*; \
     fi
 
-RUN echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /root/.bashrc
+# install ros2
+RUN if [ ${ROS_DISTRO} = "noetic" ]; then \
+    curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg &&\
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | tee /etc/apt/sources.list.d/ros2.list > /dev/null &&\
+    apt update && apt install -y \
+    ros-foxy-desktop \
+    ros-foxy-gazebo-* \
+    ros-foxy-rqt-* \
+    ros-foxy-ros1-bridge \
+    python3-colcon-common-extensions \
+    python3-rosdep \
+    python3-argcomplete \
+    ros-dev-tools \
+    && apt clean \
+    && rm -rf /var/lib/apt/lists/*; \
+    else\
+    echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> /home/user/.bashrc; \
+    fi
+
+RUN rosdep init

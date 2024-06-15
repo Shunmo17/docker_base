@@ -244,6 +244,73 @@ services:
   # ===============================================================
   #   Building ROS2 Base Image
   # ===============================================================
+  # ubuntu 20.04 -------------------------------------------------
+  ubuntu20.04-foxy:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04
+        ROS_DISTRO: foxy
+      dockerfile: dockerfiles/Dockerfile.ros2
+    depends_on:
+      - ubuntu20.04
+    image: ghcr.io/shunmo17/ros2:foxy
+
+  ubuntu20.04-cuda11.7-foxy:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
+        ROS_DISTRO: foxy
+      dockerfile: dockerfiles/Dockerfile.ros2
+    depends_on:
+      - ubuntu20.04-cuda11.7
+    image: ghcr.io/shunmo17/ros2:foxy-cuda11.7
+
+  ubuntu20.04-cuda12.1-foxy:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda12.1
+        ROS_DISTRO: foxy
+      dockerfile: dockerfiles/Dockerfile.ros2
+    depends_on:
+      - ubuntu20.04-cuda12.1
+    image: ghcr.io/shunmo17/ros2:foxy-cuda12.1
+
+  ubuntu20.04-desktop-foxy:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-desktop
+        ROS_DISTRO: foxy
+      dockerfile: dockerfiles/Dockerfile.ros2
+    depends_on:
+      - ubuntu20.04-desktop
+    image: ghcr.io/shunmo17/ros2:foxy-desktop
+
+  ubuntu20.04-desktop-cuda11.7-foxy:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-desktop-cuda11.7
+        ROS_DISTRO: foxy
+      dockerfile: dockerfiles/Dockerfile.ros2
+    depends_on:
+      - ubuntu20.04-desktop-cuda11.7
+    image: ghcr.io/shunmo17/ros2:foxy-desktop-cuda11.7
+
+  ubuntu20.04-desktop-cuda12.1-foxy:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-desktop-cuda12.1
+        ROS_DISTRO: foxy
+      dockerfile: dockerfiles/Dockerfile.ros2
+    depends_on:
+      - ubuntu20.04-desktop-cuda12.1
+    image: ghcr.io/shunmo17/ros2:foxy-desktop-cuda12.1
+
   # ubuntu 22.04 -------------------------------------------------
   ubuntu22.04-humble:
     build:
