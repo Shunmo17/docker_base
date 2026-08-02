@@ -2,148 +2,19 @@ services:
   # ===============================================================
   #   Building Ubuntu Desktop Base Image with NVIDIA-EGL-Desktop
   # ===============================================================
-  # ubuntu 20.04 -------------------------------------------------
-  ubuntu20.04-desktop:
-    build:
-      context: docker-nvidia-egl-desktop
-      args:
-        BASE_IMAGE: ubuntu:20.04
-        SELKIES_VERSION: 1.5.2
-        PASSWD: user
-      dockerfile: Dockerfile
-    image: ghcr.io/shunmo17/base:ubuntu20.04-desktop
-
-  ubuntu20.04-desktop-cuda11.7:
-    build:
-      context: docker-nvidia-egl-desktop
-      args:
-        BASE_IMAGE: nvidia/cuda:11.7.1-devel-ubuntu20.04
-        SELKIES_VERSION: 1.5.2
-        PASSWD: user
-      dockerfile: Dockerfile
-    image: ghcr.io/shunmo17/base:ubuntu20.04-desktop-cuda11.7
-
-  ubuntu20.04-desktop-cuda12.1:
-    build:
-      context: docker-nvidia-egl-desktop
-      args:
-        BASE_IMAGE: nvidia/cuda:12.1.0-devel-ubuntu20.04
-        SELKIES_VERSION: 1.5.2
-        PASSWD: user
-      dockerfile: Dockerfile
-    image: ghcr.io/shunmo17/base:ubuntu20.04-desktop-cuda12.1
-
-  # ubuntu 22.04 -------------------------------------------------
-  ubuntu22.04-desktop:
-    build:
-      context: docker-nvidia-egl-desktop
-      args:
-        BASE_IMAGE: ubuntu:22.04
-        SELKIES_VERSION: 1.5.2
-        PASSWD: user
-      dockerfile: Dockerfile
-    image: ghcr.io/shunmo17/base:ubuntu22.04-desktop
-
-  ubuntu22.04-desktop-cuda11.7:
-    build:
-      context: docker-nvidia-egl-desktop
-      args:
-        BASE_IMAGE: nvidia/cuda:11.7.1-devel-ubuntu22.04
-        SELKIES_VERSION: 1.5.2
-        PASSWD: user
-      dockerfile: Dockerfile
-    image: ghcr.io/shunmo17/base:ubuntu22.04-desktop-cuda11.7
-
-  ubuntu22.04-desktop-cuda12.1:
-    build:
-      context: docker-nvidia-egl-desktop
-      args:
-        BASE_IMAGE: nvidia/cuda:12.1.0-devel-ubuntu22.04
-        SELKIES_VERSION: 1.5.2
-        PASSWD: user
-      dockerfile: Dockerfile
-    image: ghcr.io/shunmo17/base:ubuntu22.04-desktop-cuda12.1
-
   # ubuntu 24.04 -------------------------------------------------
-  # ubuntu24.04-desktop:
-  #   build:
-  #     context: docker-nvidia-egl-desktop
-  #     args:
-  #       BASE_IMAGE: ubuntu:24.04
-  #       SELKIES_VERSION: 1.5.2
-  #       PASSWD: user
-  #     dockerfile: Dockerfile
-  #   image: ghcr.io/shunmo17/nvidia-egl-desktop:ubuntu24.04
+  ubuntu24.04-desktop:
+    build:
+      context: docker-nvidia-egl-desktop
+      args:
+        BASE_IMAGE: ubuntu:24.04
+        PASSWD: user
+      dockerfile: Dockerfile
+    image: ghcr.io/shunmo17/nvidia-egl-desktop:ubuntu24.04
 
   # ===============================================================
   #   Building Ubuntu Base Image 
   # ===============================================================
-  # ubuntu 20.04 -------------------------------------------------
-  ubuntu20.04:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ubuntu:20.04
-      dockerfile: dockerfiles/Dockerfile.base
-    image: ghcr.io/shunmo17/base:ubuntu20.04
-
-  ubuntu20.04-dind:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: cruizba/ubuntu-dind:focal-26.0.1
-      dockerfile: dockerfiles/Dockerfile.base
-    image: ghcr.io/shunmo17/dind-base:ubuntu20.04
-
-  ubuntu20.04-cuda11.7:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: nvidia/cuda:11.7.1-devel-ubuntu20.04
-      dockerfile: dockerfiles/Dockerfile.base
-    image: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
-
-  ubuntu20.04-cuda12.1:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: nvidia/cuda:12.1.0-devel-ubuntu20.04
-      dockerfile: dockerfiles/Dockerfile.base
-    image: ghcr.io/shunmo17/base:ubuntu20.04-cuda12.1
-
-  # ubuntu 22.04 -------------------------------------------------
-  ubuntu22.04:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ubuntu:22.04
-      dockerfile: dockerfiles/Dockerfile.base
-    image: ghcr.io/shunmo17/base:ubuntu22.04
-
-  ubuntu22.04-dind:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: cruizba/ubuntu-dind:jammy-26.0.1
-      dockerfile: dockerfiles/Dockerfile.base
-    image: ghcr.io/shunmo17/dind-base:ubuntu22.04
-
-  ubuntu22.04-cuda11.7:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: nvidia/cuda:11.7.1-devel-ubuntu22.04
-      dockerfile: dockerfiles/Dockerfile.base
-    image: ghcr.io/shunmo17/base:ubuntu22.04-cuda11.7
-
-  ubuntu22.04-cuda12.1:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: nvidia/cuda:12.1.0-devel-ubuntu22.04
-      dockerfile: dockerfiles/Dockerfile.base
-    image: ghcr.io/shunmo17/base:ubuntu22.04-cuda12.1
-
   # ubuntu 24.04 -------------------------------------------------
   ubuntu24.04:
     build:
@@ -157,223 +28,23 @@ services:
     build:
       context: .
       args:
-        BASE_IMAGE: cruizba/ubuntu-dind:noble-26.0.1
+        BASE_IMAGE: cruizba/ubuntu-dind:noble-latest
       dockerfile: dockerfiles/Dockerfile.base
     image: ghcr.io/shunmo17/dind-base:ubuntu24.04
 
-  # ubuntu24.04-desktop:
-  #   build:
-  #     context: .
-  #     args:
-  #       BASE_IMAGE: ghcr.io/shunmo17/nvidia-egl-desktop:ubuntu24.04
-  #     dockerfile: dockerfiles/Dockerfile.base
-  #   image: ghcr.io/shunmo17/base:ubuntu24.04-desktop
-  #   depends_on:
-  #     - nvidia-egl-desktop-ubuntu24.04
-
-  # ===============================================================
-  #   Building ROS1 Base Image
-  # ===============================================================
-  # ubuntu 20.04 -------------------------------------------------
-  ubuntu20.04-noetic:
+  # ubuntu 26.04 -------------------------------------------------
+  ubuntu26.04:
     build:
       context: .
       args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04
-        ROS_DISTRO: noetic
-      dockerfile: dockerfiles/Dockerfile.ros1
-    depends_on:
-      - ubuntu20.04
-    image: ghcr.io/shunmo17/ros1:noetic
+        BASE_IMAGE: ubuntu:26.04
+      dockerfile: dockerfiles/Dockerfile.base
+    image: ghcr.io/shunmo17/base:ubuntu26.04
 
-  ubuntu20.04-cuda11.7-noetic:
+  ubuntu26.04-dind:
     build:
       context: .
       args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
-        ROS_DISTRO: noetic
-      dockerfile: dockerfiles/Dockerfile.ros1
-    depends_on:
-      - ubuntu20.04-cuda11.7
-    image: ghcr.io/shunmo17/ros1:noetic-cuda11.7
-
-  ubuntu20.04-cuda12.1-noetic:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda12.1
-        ROS_DISTRO: noetic
-      dockerfile: dockerfiles/Dockerfile.ros1
-    depends_on:
-      - ubuntu20.04-cuda12.1
-    image: ghcr.io/shunmo17/ros1:noetic-cuda12.1
-
-  ubuntu20.04-desktop-noetic:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-desktop
-        ROS_DISTRO: noetic
-      dockerfile: dockerfiles/Dockerfile.ros1
-    depends_on:
-      - ubuntu20.04-desktop
-    image: ghcr.io/shunmo17/ros1:noetic-desktop
-
-  ubuntu20.04-desktop-cuda11.7-noetic:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-desktop-cuda11.7
-        ROS_DISTRO: noetic
-      dockerfile: dockerfiles/Dockerfile.ros1
-    depends_on:
-      - ubuntu20.04-desktop-cuda11.7
-    image: ghcr.io/shunmo17/ros1:noetic-desktop-cuda11.7
-
-  ubuntu20.04-desktop-cuda12.1-noetic:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-desktop-cuda12.1
-        ROS_DISTRO: noetic
-      dockerfile: dockerfiles/Dockerfile.ros1
-    depends_on:
-      - ubuntu20.04-desktop-cuda12.1
-    image: ghcr.io/shunmo17/ros1:noetic-desktop-cuda12.1
-
-  # ===============================================================
-  #   Building ROS2 Base Image
-  # ===============================================================
-  # ubuntu 20.04 -------------------------------------------------
-  ubuntu20.04-foxy:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04
-        ROS_DISTRO: foxy
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu20.04
-    image: ghcr.io/shunmo17/ros2:foxy
-
-  ubuntu20.04-cuda11.7-foxy:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda11.7
-        ROS_DISTRO: foxy
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu20.04-cuda11.7
-    image: ghcr.io/shunmo17/ros2:foxy-cuda11.7
-
-  ubuntu20.04-cuda12.1-foxy:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-cuda12.1
-        ROS_DISTRO: foxy
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu20.04-cuda12.1
-    image: ghcr.io/shunmo17/ros2:foxy-cuda12.1
-
-  ubuntu20.04-desktop-foxy:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-desktop
-        ROS_DISTRO: foxy
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu20.04-desktop
-    image: ghcr.io/shunmo17/ros2:foxy-desktop
-
-  ubuntu20.04-desktop-cuda11.7-foxy:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-desktop-cuda11.7
-        ROS_DISTRO: foxy
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu20.04-desktop-cuda11.7
-    image: ghcr.io/shunmo17/ros2:foxy-desktop-cuda11.7
-
-  ubuntu20.04-desktop-cuda12.1-foxy:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu20.04-desktop-cuda12.1
-        ROS_DISTRO: foxy
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu20.04-desktop-cuda12.1
-    image: ghcr.io/shunmo17/ros2:foxy-desktop-cuda12.1
-
-  # ubuntu 22.04 -------------------------------------------------
-  ubuntu22.04-humble:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu22.04
-        ROS_DISTRO: humble
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu22.04
-    image: ghcr.io/shunmo17/ros2:humble
-
-  ubuntu22.04-cuda11.7-humble:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu22.04-cuda11.7
-        ROS_DISTRO: humble
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu22.04-cuda11.7
-    image: ghcr.io/shunmo17/ros2:humble-cuda11.7
-
-  ubuntu22.04-cuda12.1-humble:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu22.04-cuda12.1
-        ROS_DISTRO: humble
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu22.04-cuda12.1
-    image: ghcr.io/shunmo17/ros2:humble-cuda12.1
-
-  ubuntu22.04-desktop-humble:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu22.04-desktop
-        ROS_DISTRO: humble
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu22.04-desktop
-    image: ghcr.io/shunmo17/ros2:humble-desktop
-
-  ubuntu22.04-desktop-cuda11.7-humble:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu22.04-desktop-cuda11.7
-        ROS_DISTRO: humble
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu22.04-desktop-cuda11.7
-    image: ghcr.io/shunmo17/ros2:humble-desktop-cuda11.7
-
-  ubuntu22.04-desktop-cuda12.1-humble:
-    build:
-      context: .
-      args:
-        BASE_IMAGE: ghcr.io/shunmo17/base:ubuntu22.04-desktop-cuda12.1
-        ROS_DISTRO: humble
-      dockerfile: dockerfiles/Dockerfile.ros2
-    depends_on:
-      - ubuntu22.04-desktop-cuda12.1
-    image: ghcr.io/shunmo17/ros2:humble-desktop-cuda12.1
+        BASE_IMAGE: cruizba/ubuntu-dind:resolute-latest
+      dockerfile: dockerfiles/Dockerfile.base
+    image: ghcr.io/shunmo17/dind-base:ubuntu26.04

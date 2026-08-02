@@ -29,16 +29,14 @@ services:
 
     environment:
       - TZ=UTC
-      - SIZEW=${SIZEW:-1920}
-      - SIZEH=${SIZEH:-1080}
-      - REFRESH=${REFRESH:-60}
-      - DPI=${DPI:-96}
-      - PASSWD=${PASSWD:-user}
+      - DISPLAY_SIZEW=${DISPLAY_SIZEW:-1920}
+      - DISPLAY_SIZEH=${DISPLAY_SIZEH:-1080}
+      - DISPLAY_REFRESH=${DISPLAY_REFRESH:-60}
+      - DISPLAY_DPI=${DISPLAY_DPI:-96}
       - BASIC_AUTH_PASSWORD=${PASSWD:-user}
-      - CDEPTH=24
+      - DISPLAY_CDEPTH=24
       - VIDEO_PORT=DFP
-      - WEBRTC_ENCODER=nvh264enc
-      - NOVNC_ENABLE=true
+      - SELKIES_ENCODER=nvh264enc
       - LAUNCH_SSH_SERVER=${LAUNCH_SSH_SERVER:-true}
 
     user: user

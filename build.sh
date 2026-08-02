@@ -1,15 +1,12 @@
 #!/bin/bash
 
-export COMPOSE_DOCKER_CLI_BUILD=1
-export DOCKER_BUILDKIT=1
-
-max_retry_count=100 # リトライ回数
+max_retry_count=1 # リトライ回数
 retry_interval=5    # リトライ間隔（秒）
 
 retry_count=0
 while true; do
   # your_command -> 実行したいコマンド
-  docker compose build --parallel && break
+  docker compose build && break
 
   # リトライ回数が上限に達している場合は、エラーメッセージを出力してリトライ終了
   retry_count=$((retry_count + 1))

@@ -28,7 +28,7 @@ RUN apt update && apt install -y \
 
 # ssh server settings
 ENV LAUNCH_SSH_SERVER=false
-RUN mkdir /var/run/sshd
+RUN mkdir -p /var/run/sshd
 RUN sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config &&\
     sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config &&\
     sed -i "s/#Port 22/Port ${SSH_PORT}/" /etc/ssh/sshd_config &&\

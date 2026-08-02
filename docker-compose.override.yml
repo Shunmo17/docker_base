@@ -1,15 +1,25 @@
 services:
-  ubuntu20.04:
+  ubuntu24.04-desktop:
+    extends:
+      file: docker-compose.common.yml
+      service: nvidia-edl-desktop
+
+  ubuntu24.04:
     extends:
       file: docker-compose.common.yml
       service: normal
 
-  ubuntu20.04-desktop:
+  ubuntu24.04-dind:
     extends:
       file: docker-compose.common.yml
-      service: nvidia-edl-desktop
+      service: normal
 
-  ubuntu20.04-desktop-noetic:
+  ubuntu26.04:
     extends:
       file: docker-compose.common.yml
-      service: nvidia-edl-desktop
+      service: normal
+
+  ubuntu26.04-dind:
+    extends:
+      file: docker-compose.common.yml
+      service: normal
